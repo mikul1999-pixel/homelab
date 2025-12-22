@@ -11,7 +11,7 @@ It includes service configurations, Docker stacks, networking, security, and ope
 `homelab/`<br>
 ├── `cloudflared/` – Cloudflare Tunnel configuration<br>
 ├── `docker/` – Docker Compose stacks + service folders<br>
-└── `docs/` – Architecture, networking, security, backups<br>
+└── `docs/` – Architecture, networking, security<br>
 
 --- 
 <br>
