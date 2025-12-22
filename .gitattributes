@@ -1,0 +1,21 @@
+# normalize line endings
+* text=auto
+
+# language stats
+*.css linguist-vendored
+assets/ linguist-vendored
+docs/* linguist-documentation
+
+# treat images as binary
+*.png binary
+*.jpg binary
+*.svg binary
+
+# improve diffs
+*.yml diff=yaml
+*.yaml diff=yaml
+*.json diff=json
+*.md diff=markdown
+
+# export settings
+docs/ export-ignore
