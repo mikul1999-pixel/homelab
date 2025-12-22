@@ -1,0 +1,10 @@
+# compose for common components across ymls
+
+networks:
+  - shared_networks
+
+volumes:
+  - shared_volumes
+
+services:
+  - shared_services

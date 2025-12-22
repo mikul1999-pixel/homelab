@@ -1,0 +1,5 @@
+- sensor:
+    - name: "Example Template Sensor"
+      unique_id: example_template_sensor
+      state: >
+        {{ states('sensor.example') }}

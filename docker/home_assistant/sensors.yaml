@@ -1,0 +1,14 @@
+- platform: rest
+  name: Example REST Sensor
+  resource: http://example.com/api
+  value_template: "{{ value_json.value }}"
+  
+- platform: command_line
+  name: Example Command Sensor
+  command: "echo 123"
+  scan_interval: 60
+
+- platform: statistics
+  name: Example Stats Sensor
+  entity_id: sensor.example
+

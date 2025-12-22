@@ -1,0 +1,46 @@
+homelab/
+├── README.md
+│
+├── cloudflared/
+│   ├── config.yml
+│   └── README.md
+│
+├── docker/
+│   ├── docker-compose.yml
+│   ├── homepage.yml
+│   ├── authentik.yml
+│   ├── immich.yml
+│   ├── nextcloud.yml
+│   ├── home-assist.yml
+│   │
+│   ├── homepage/
+│   │   └── config_files
+│   │
+│   ├── authentik/
+│   │   └── config_files
+│   │
+│   ├── immich/
+│   │   └── config_files
+│   │
+│   ├── nextcloud/
+│   │   └── config_files
+│   │
+│   ├── home_assistant/
+│   │   └── config_files
+│   │
+│   ├── flask/
+│   │   └── config_files
+│   │
+│   ├── cron_jobs/
+│   │   └── config_files
+│   │
+│   └── README.md
+│
+└── docs/
+    ├── structure.txt
+    ├── services.md
+    ├── networking.md
+    ├── storage.md
+    ├── backups.md
+    └── security.md
+

@@ -1,0 +1,8 @@
+tunnel: mytunnel
+credentials-file: /path/.cloudflared/xyz.json
+
+ingress:
+  - hostname: sub.domain.com
+    service: http://localhost:port_nbr        # reverse proxy that maps a web domain + subdomain to a local port
+    
+  - service: http_status:404                  # any subdomain not included in this file will return a 404 error

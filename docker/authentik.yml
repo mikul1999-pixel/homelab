@@ -1,0 +1,50 @@
+# authentik as identity provider
+
+services:
+  authentik-server:
+    image: 
+    container_name: authentik_server
+    command: server
+    depends_on:
+      - authentik-database
+    environment:
+      AUTHENTIK_SECRET_KEY:
+      AUTHENTIK_POSTGRESQL__HOST: 
+      AUTHENTIK_POSTGRESQL__USER:
+      AUTHENTIK_POSTGRESQL__PASSWORD: 
+      AUTHENTIK_POSTGRESQL__NAME: 
+      AUTHENTIK_REDIS__HOST: 
+    ports:
+      - "port_number"
+    volumes:
+      - authentik_folder_path
+    restart: 
+
+  authentik-worker:
+    image: 
+    container_name: authentik_worker
+    command: worker
+    depends_on:
+      - authentik-database
+    environment:
+      AUTHENTIK_SECRET_KEY: 
+      AUTHENTIK_POSTGRESQL__HOST: 
+      AUTHENTIK_POSTGRESQL__USER: 
+      AUTHENTIK_POSTGRESQL__PASSWORD: 
+      AUTHENTIK_POSTGRESQL__NAME: 
+      AUTHENTIK_REDIS__HOST: 
+    volumes:
+      - authentik_folder_path
+    restart: 
+
+  authentik-database:
+    image: 
+    container_name: authentik_postgres
+    environment:
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD: 
+      POSTGRES_DB:
+    volumes:
+      - db_data_location
+    restart: 
+

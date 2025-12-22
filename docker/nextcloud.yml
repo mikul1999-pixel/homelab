@@ -1,0 +1,44 @@
+# nextcloud for file storage
+
+services:
+  nextcloud-database:
+    image: 
+    container_name: nextcloud_postgres
+    environment:
+      POSTGRES_DB: 
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD: 
+      CF_ACCESS_CLIENT_ID: 
+      CF_ACCESS_CLIENT_SECRET: 
+    volumes:
+      - db_data_location
+    restart: 
+    networks:
+
+
+  nextcloud-app:
+    image: 
+    container_name: nextcloud_server
+    ports:
+      - "port_nbr"
+    depends_on:
+      - nextcloud-database
+      - redis
+    environment:
+      POSTGRES_HOST:
+      POSTGRES_DB:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      REDIS_HOST: 
+      CF_ACCESS_CLIENT_ID:
+      CF_ACCESS_CLIENT_SECRET:
+    volumes:
+      - nextcloud_data_location
+      - immich_data_location          # for linking immich as external folder
+    restart: 
+    networks:
+    
+    
+networks:
+
+

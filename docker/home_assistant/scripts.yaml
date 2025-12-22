@@ -1,0 +1,8 @@
+- alias: Example Script
+  description: >
+    A blank script template for documentation.
+  mode: single
+  sequence:
+    - service: notify.notify
+      data:
+        message: "Hello from example_script"

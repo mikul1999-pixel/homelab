@@ -1,0 +1,48 @@
+# immich for photos
+
+services:
+  immich-server:
+    image: 
+    container_name: immich_server
+    env_file: .env
+    volumes:
+      - upload_location
+    ports:
+      - "port_nbr"
+    depends_on:
+      - redis
+      - database
+    restart: 
+    networks:
+
+
+  immich-machine-learning:
+    image: 
+    container_name: immich_machine_learning
+    env_file: .env
+    volumes:
+      - model_cache
+    restart: 
+    networks:
+
+
+  database:
+    image: 
+    container_name: immich_postgres
+    environment:
+      POSTGRES_USER: 
+      POSTGRES_PASSWORD: 
+      POSTGRES_DB: 
+      POSTGRES_INITDB_ARGS:
+    volumes:
+      - db_data_location
+    shm_size: 
+    restart: 
+    networks:
+
+
+volumes:
+
+networks:
+
+

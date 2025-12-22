@@ -1,0 +1,29 @@
+{
+  "disk": {
+    "used": "0G",
+    "total": "0G",
+    "available": "0G"
+  },
+  "memory": {
+    "used_MB": "0",
+    "total_MB": "0",
+    "available_MB": "0"
+  },
+  "cpu": {
+    "load_avg": "0.00, 0.00, 0.00"
+  },
+  "uptime": "up 0 days, 0 hours, 0 minutes",
+  "processes": "0",
+  "users_logged_in": "0",
+  "files_in_data_dir": "0",
+  "network": {
+    "hostname": "mikul@localhost",
+    "local_ip": "000.000.0.00",
+    "public_ip": "0000:0000"
+  },
+  "docker": {
+    "containers_running": "0",
+    "images": "0"
+  },
+  "timestamp": "Today()"
+}

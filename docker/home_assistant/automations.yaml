@@ -1,0 +1,8 @@
+- alias: Example Automation
+  description: >
+    A blank automation template for documentation.
+  mode: single
+  trigger: []
+  condition: []
+  action: []
+

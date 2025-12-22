@@ -1,0 +1,29 @@
+# homepage for app navigation
+
+services:
+  homepage:
+    image: 
+    container_name: homepage
+    volumes:
+      - html_folder_path
+    ports:
+      - "port_nbr"
+    restart: 
+    networks:
+
+      
+  info-api:
+    build: app folder path
+    container_name: homepage_api
+    volumes:
+      - assets_folder_path
+    ports:
+      - "port_nbr"
+    restart: 
+    networks:
+
+
+networks:
+
+
+
