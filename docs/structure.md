@@ -16,6 +16,9 @@ homelab/<br>
 │   ├── homepage/<br>
 │   │   └── config_files<br>
 │   │<br>
+│   ├── portainer/<br>
+│   │   └── config_files<br>
+│   │<br>
 │   ├── authentik/<br>
 │   │   └── config_files<br>
 │   │<br>

@@ -18,6 +18,7 @@ It includes service configurations, Docker stacks, networking, security, and ope
 
 ## Services Included
 
+- **Portainer** – Docker container management  
 - **Authentik** – Identity provider  
 - **Homepage** – Dashboard  
 - **Immich** – Photo management  
