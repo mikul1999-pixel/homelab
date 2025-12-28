@@ -20,9 +20,8 @@ This folder contains all Docker Compose stacks and service‑specific configurat
 
 Each service has its own folder with important config files.
 
-- `homepage/` – Static webpage assets
+- `homepage/` – React & Flask assets
 - `cron_jobs/` – Sample scheduled task   
-- `flask/` – Sample microservice
 - `portainer/` – docker run command
 - `authentik/` – null
 - `immich/` – null

@@ -23,11 +23,19 @@ It includes service configurations, Docker stacks, networking, security, and ope
 - **Homepage** – Dashboard  
 - **Immich** – Photo management  
 - **Nextcloud** – File sync  
-- **Home Assistant** – Smart home automation  
-- **Flask** – Custom microservices  
+- **Home Assistant** – Smart home automation    
 - **Cron Jobs** – Scheduled tasks  
 
 Each service has its own folder under `docker/` 
+
+---
+<br>
+
+## Navigation Dashboard
+`homelab/docker/homepage/` contains source code for my navigation home page and flask api
+<br><br>
+Sample image
+
 
 ---
 <br>
@@ -36,5 +44,5 @@ Each service has its own folder under `docker/`
 
 See the `docs/` folder for:
 
-- `structure.md` – Folder layout   
+- `structure.md` – Directory layout   
 - `networking.md` – Cloudflare, DNS, tunnels   

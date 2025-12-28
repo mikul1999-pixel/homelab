@@ -1,45 +1,37 @@
-homelab/<br>
-├── README.md<br>
-│<br>
-├── cloudflared/<br>
-│   ├── config.yml<br>
-│   └── README.md<br>
-│<br>
-├── docker/<br>
-│   ├── docker-compose.yml<br>
-│   ├── homepage.yml<br>
-│   ├── authentik.yml<br>
-│   ├── immich.yml<br>
-│   ├── nextcloud.yml<br>
-│   ├── home-assist.yml<br>
-│   │<br>
-│   ├── homepage/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── portainer/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── authentik/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── immich/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── nextcloud/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── home_assistant/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── flask/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   ├── cron_jobs/<br>
-│   │   └── config_files<br>
-│   │<br>
-│   └── README.md<br>
-│<br>
-└── docs/<br>
-│   ├── structure.md<br>
-│   └── networking.md<br>
+```bash
+homelab/
+├── cloudflared/
+│   ├── config.yml
+│   └── README.md
+│
+├── docker/
+│   ├── docker-compose.yml
+│   ├── homepage.yml
+│   ├── authentik.yml
+│   ├── immich.yml
+│   ├── nextcloud.yml
+│   ├── home-assist.yml
+│   │
+│   ├── homepage/
+│   │   └── frontend/ (react)
+│   │   └── backend/ (flask)
+│   │
+│   ├── portainer/
+│   │   └── config_files
+│   │
+│   ├── authentik/
+│   │   └── config_files
+│   │
+│   ├── immich/
+│   │   └── config_files
+│   │
+│   ├── nextcloud/
+│   │   └── config_files
+│   │
+│   ├── home_assistant/
+│   │   └── config_files
+│   │
+│   └── cron_jobs/
+│       └── config_files
 
+```
