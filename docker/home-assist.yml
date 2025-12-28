@@ -2,15 +2,17 @@
 
 services:
   homeassistant:
-    image: 
-    container_name: homeassistant
-    env_file: .env
+    image: ghcr.io/home-assistant/home-assistant:${HOMEASSISTANT_VERSION}
+    container_name: ${HOMEASSISTANT_NAME}
+    env_file:
+      - home_assistant/.env
+      - home_assistant/.env.manager
     volumes:
-      - home_assistant_folder_path
+      - ${HOMEASSISTANT_FOLDER}:/config
+      - /etc/localtime:/etc/localtime:ro
     # ports:
-    #   - "port_nbr"                # "ports:" does not do anything with "network_mode: host"
+    #   - "${HOMEASSISTANT_PORT}"    # here for docs clarity. "ports:" does not do anything with "network_mode: host"
     environment:
-      - TZ=timezone_for_dt
-    restart: 
-    network_mode: host              # assigned to a default port. allows container to share the same network stack as the host (local)
-
+      - TZ=America/Los_Angeles
+    restart: unless-stopped
+    network_mode: host

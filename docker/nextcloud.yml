@@ -2,43 +2,51 @@
 
 services:
   nextcloud-database:
-    image: 
-    container_name: nextcloud_postgres
+    image: postgres:${NEXT_DB_VERSION}
+    container_name: ${NEXT_DB_NAME}
+    env_file:
+      - nextcloud/.env
+      - nextcloud/.env.manager
     environment:
-      POSTGRES_DB: 
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD: 
-      CF_ACCESS_CLIENT_ID: 
-      CF_ACCESS_CLIENT_SECRET: 
+      POSTGRES_DB: ${NEXT_DB_DATABASE_NAME}
+      POSTGRES_USER: ${NEXT_DB_USERNAME}
+      POSTGRES_PASSWORD: ${NEXT_DB_PASSWORD}
+      CF_ACCESS_CLIENT_ID: ${CF_ACCESS_CLIENT_ID}
+      CF_ACCESS_CLIENT_SECRET: ${CF_ACCESS_CLIENT_SECRET}
     volumes:
-      - db_data_location
-    restart: 
+      - ${NEXT_DB_DATA_LOCATION}:/var/lib/postgresql/data
+    restart: always
     networks:
-
+      - shared_net
 
   nextcloud-app:
-    image: 
-    container_name: nextcloud_server
+    image: nextcloud:${NEXTCLOUD_VERSION}
+    container_name: ${NEXT_SERVER_NAME}
+    env_file:
+      - nextcloud/.env
+      - nextcloud/.env.manager
     ports:
-      - "port_nbr"
+      - "${NEXT_SERVER_PORT}"
     depends_on:
       - nextcloud-database
       - redis
     environment:
-      POSTGRES_HOST:
-      POSTGRES_DB:
-      POSTGRES_USER:
-      POSTGRES_PASSWORD:
-      REDIS_HOST: 
-      CF_ACCESS_CLIENT_ID:
-      CF_ACCESS_CLIENT_SECRET:
+      POSTGRES_HOST: nextcloud-database
+      POSTGRES_DB: ${NEXT_DB_DATABASE_NAME}
+      POSTGRES_USER: ${NEXT_DB_USERNAME}
+      POSTGRES_PASSWORD: ${NEXT_DB_PASSWORD}
+      REDIS_HOST: redis
+      CF_ACCESS_CLIENT_ID: ${CF_ACCESS_CLIENT_ID}
+      CF_ACCESS_CLIENT_SECRET: ${CF_ACCESS_CLIENT_SECRET}
     volumes:
-      - nextcloud_data_location
-      - immich_data_location          # for linking immich as external folder
-    restart: 
+      - ${NEXT_FILE_DATA_LOCATION}/files/data:/var/www/html/data
+      - ${NEXT_FILE_DATA_LOCATION}/files/config:/var/www/html/config
+      - ${NEXT_FILE_DATA_LOCATION}/files/apps:/var/www/html/apps
+      - ${IMMICH_EXTERNAL_UPLOAD_LOCATION}/library:/mnt/immich_uploads
+    restart: always
     networks:
-    
+      - shared_net
     
 networks:
-
-
+  shared_net:
+    external: true

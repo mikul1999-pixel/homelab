@@ -1,10 +1,23 @@
-# compose for common components across ymls
+# common services
 
 networks:
-  - shared_networks
+  shared_net:
+    driver: bridge
 
 volumes:
-  - shared_volumes
+  redis_data:
+  model-cache:
+  postgres_data:
+  authentik:
 
 services:
-  - shared_services
+  redis:
+    image: docker.io/valkey/valkey:8
+    container_name: redis
+    restart: always
+    healthcheck:
+      test: redis-cli ping || exit 1
+    networks:
+      - shared_net
+    volumes:
+      - redis_data:/data

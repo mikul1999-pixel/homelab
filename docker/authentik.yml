@@ -2,49 +2,57 @@
 
 services:
   authentik-server:
-    image: 
-    container_name: authentik_server
+    image: ghcr.io/goauthentik/server:${AUTHENTIK_VERSION}
+    container_name: ${AUTH_SERVER_NAME}
     command: server
+    env_file:
+      - authentik/.env
+      - authentik/.env.manager
     depends_on:
       - authentik-database
     environment:
-      AUTHENTIK_SECRET_KEY:
-      AUTHENTIK_POSTGRESQL__HOST: 
-      AUTHENTIK_POSTGRESQL__USER:
-      AUTHENTIK_POSTGRESQL__PASSWORD: 
-      AUTHENTIK_POSTGRESQL__NAME: 
-      AUTHENTIK_REDIS__HOST: 
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_POSTGRESQL__HOST: authentik-database
+      AUTHENTIK_POSTGRESQL__USER: ${AUTH_DB_USERNAME}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${AUTH_DB_PASSWORD}
+      AUTHENTIK_POSTGRESQL__NAME: ${AUTH_DB_DATABASE_NAME}
+      AUTHENTIK_REDIS__HOST: redis
     ports:
-      - "port_number"
+      - "${AUTHENTIK_PORT}"
     volumes:
-      - authentik_folder_path
-    restart: 
+      - ${AUTHENTIK_FOLDER}:/config
+    restart: unless-stopped
 
   authentik-worker:
-    image: 
-    container_name: authentik_worker
+    image: ghcr.io/goauthentik/server:${AUTHENTIK_VERSION}
+    container_name: ${AUTH_WORKER_NAME}
     command: worker
+    env_file:
+      - authentik/.env
+      - authentik/.env.manager
     depends_on:
       - authentik-database
     environment:
-      AUTHENTIK_SECRET_KEY: 
-      AUTHENTIK_POSTGRESQL__HOST: 
-      AUTHENTIK_POSTGRESQL__USER: 
-      AUTHENTIK_POSTGRESQL__PASSWORD: 
-      AUTHENTIK_POSTGRESQL__NAME: 
-      AUTHENTIK_REDIS__HOST: 
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_POSTGRESQL__HOST: authentik-database
+      AUTHENTIK_POSTGRESQL__USER: ${AUTH_DB_USERNAME}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${AUTH_DB_PASSWORD}
+      AUTHENTIK_POSTGRESQL__NAME: ${AUTH_DB_DATABASE_NAME}
+      AUTHENTIK_REDIS__HOST: redis
     volumes:
-      - authentik_folder_path
-    restart: 
+      - ${AUTHENTIK_FOLDER}:/config
+    restart: unless-stopped
 
   authentik-database:
-    image: 
-    container_name: authentik_postgres
+    image: postgres:${AUTH_DB_VERSION}
+    container_name: ${AUTH_DB_NAME}
+    env_file:
+      - authentik/.env
+      - authentik/.env.manager
     environment:
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD: 
-      POSTGRES_DB:
+      POSTGRES_USER: ${AUTH_DB_USERNAME}
+      POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD}
+      POSTGRES_DB: ${AUTH_DB_DATABASE_NAME}
     volumes:
-      - db_data_location
-    restart: 
-
+      - ${AUTH_DB_DATA_LOCATION}:/var/lib/postgresql/data
+    restart: unless-stopped

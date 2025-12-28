@@ -2,47 +2,56 @@
 
 services:
   immich-server:
-    image: 
-    container_name: immich_server
-    env_file: .env
+    image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
+    container_name: ${IMMICH_SERVER_NAME}
+    env_file:
+      - immich/.env
+      - immich/.env.manager
     volumes:
-      - upload_location
+      - ${IMMICH_UPLOAD_LOCATION}:/data
+      - /etc/localtime:/etc/localtime:ro
     ports:
-      - "port_nbr"
+      - "${IMMICH_SERVER_PORT}"
     depends_on:
       - redis
       - database
-    restart: 
+    restart: always
     networks:
-
+      - shared_net
 
   immich-machine-learning:
-    image: 
-    container_name: immich_machine_learning
-    env_file: .env
+    image: ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}
+    container_name: ${IMMICH_ML_NAME}
+    env_file:
+      - immich/.env
+      - immich/.env.manager
     volumes:
-      - model_cache
-    restart: 
+      - model-cache:/cache
+    restart: always
     networks:
-
+      - shared_net
 
   database:
-    image: 
-    container_name: immich_postgres
+    image: ghcr.io/immich-app/postgres:${IMMICH_DB_VERSION}
+    container_name: ${IMMICH_DB_NAME}
+    env_file:
+      - immich/.env
+      - immich/.env.manager
     environment:
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD: 
-      POSTGRES_DB: 
-      POSTGRES_INITDB_ARGS:
+      POSTGRES_USER: ${IMMICH_DB_USERNAME}
+      POSTGRES_PASSWORD: ${IMMICH_DB_PASSWORD}
+      POSTGRES_DB: ${IMMICH_DB_DATABASE_NAME}
+      POSTGRES_INITDB_ARGS: "--data-checksums"
     volumes:
-      - db_data_location
-    shm_size: 
-    restart: 
+      - ${IMMICH_DB_DATA_LOCATION}:/var/lib/postgresql/data
+    shm_size: 128mb
+    restart: always
     networks:
-
+      - shared_net
 
 volumes:
+  model-cache:
 
 networks:
-
-
+  shared_net:
+    external: true
