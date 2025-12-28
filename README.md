@@ -21,7 +21,7 @@ It includes service configurations, Docker stacks, networking, security, and ope
 
 - **Portainer** – Docker container management  
 - **Authentik** – Identity provider  
-- **Homepage** – Dashboard  
+- **Homepage** – My custom dashboard  
 - **Immich** – Photo management  
 - **Nextcloud** – File sync  
 - **Home Assistant** – Smart home automation    
