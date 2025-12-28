@@ -35,6 +35,7 @@ Each service has its own folder under `docker/`
 `homelab/docker/homepage/` contains source code for my navigation home page and flask api
 <br><br>
 Sample image
+<img width="1985" height="1328" alt="server_homepage" src="https://github.com/user-attachments/assets/d22f7ddd-3fa6-4891-8cc1-5804d1c3f688" />
 
 
 ---
