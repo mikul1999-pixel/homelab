@@ -1,7 +1,8 @@
 # Homelab
 
 This repository exists to document my self‑hosted home server.  
-It includes service configurations, Docker stacks, networking, security, and operational notes.
+It includes service configurations, Docker stacks, networking, security, and operational notes. <br><br>
+**Note:** Most files in the repo are templates or sanitized versions (no sensitive data or domain names)
 
 --- 
 <br>
