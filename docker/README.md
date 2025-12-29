@@ -40,11 +40,11 @@ docker compose -f docker-compose.yml \
                -f nextcloud.yml \
                -f home-assist.yml up -d
 
-# other useful commands
+# general useful commands
 docker compose up -d
 docker compose build
-docker restart homeassistant
-docker exec -it homeassistant bash
+docker restart <container>
+docker exec -it <container> bash
 
 # cron commands to make file executable & scheduled
 chmod +x sample.sh
